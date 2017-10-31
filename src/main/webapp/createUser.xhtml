@@ -14,6 +14,12 @@
 	<title>PostUser</title>
 </h:head>
 <h:body>
+		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+			<h:link class="navbar-brand" value="PostUser" outcome="index"
+				rendered="#{not authMb.logged}" />
+			<h:link class="navbar-nav" value="Entrar " outcome="login"
+				rendered="#{authMb.logged}" />
+		</nav>
 <f:view>
     <h:form>
         <h1>Crear Usuario</h1>
@@ -36,7 +42,7 @@
 		</div>
 		<div>
 			<label>Contraseña :</label>
-			<h:inputText value="#{createUserMb.user.pwd}" />
+			<h:inputSecret value="#{createUserMb.user.pwd}" />
 		</div>
 		<h:commandButton action="#{createUserMb.create}" value="Crear" />
     </h:form>

@@ -11,35 +11,42 @@
 	<script src="/resources/js/popper.min.js"></script>
 	<script src="/resources/js/popper-utils.min.js"></script>
 	<script src="/resources/js/bootstrap.min.js"></script>
-	<title>PostUser</title>
+	<title>PostUser-Términos</title>
 </h:head>
 <h:body>
 
 	<div class="container-fluid">
 		<h:form>
 			<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-				<h:link class="navbar-brand" value="Entrar " outcome="login"
-					rendered="#{not authMb.logged}" />
-				<h:link class="navbar-brand" value="Registrarse" outcome="register"
-					rendered="#{authMb.logged}" />
-				<h:commandLink class="navbar-brand" value="Salir"
-					action="#{authMb.logout()}" rendered="#{not authMb.logged}" />
-			</nav>
+					<h:link class="navbar-brand" value="PostUser" outcome="index"
+						rendered="#{not authMb.logged}" />
+					<h:link class="navbar-nav" value="Entrar " outcome="login"
+						rendered="#{not authMb.logged}" />
+					<h:link class="navbar-nav" value="Registrarse" outcome="register"
+						rendered="#{authMb.logged}" />
+				</nav>
 		</h:form>
-		<h1>Formulario de Registro</h1>
-		<div class="col-md-3">
+		<h1>Términos y Condiciones</h1>
+		<div class="col-md-6">
 			<f:view>
-				<h:form class="form-signin">
-					<h2 class="form-signin-heading">Registrese</h2>
+					<h2>Politica de privacidad <span class="badge badge-secondary">Nuevo</span></h2>
 					<div>
-						<h:link outcome="createUser" value="Nuevo Usuario" />
+					<p class="font-italic">
+						La red social PostUser esta diseñada para personas mayores de dieciocho (18) años, para registrarse usted puede aceptar o 
+						rechazar la politica de uso del sistema.
+					</p>
+					<p class="font-weight-light">PostUser 2017</p>
+					<form>
+						<h:button class="btn btn-primary" outcome="createUser" value="Acepto" />
+						<h:button class="btn btn-secondary" outcome="index" value="No Acepto" />
+					</form>
+					<h3>Algunos de nuestros usuarios <small>Y muchos mas</small></h3>
 						<ul>
 							<ui:repeat value="#{userMb.all()}" var="user">
-								<li>#{user.lname}, #{user.name} [#{user.age}]</li>
+								<li>#{user.lname}, #{user.name}</li>
 							</ui:repeat>
 						</ul>
 					</div>
-				</h:form>
 			</f:view>
 		</div>
 
