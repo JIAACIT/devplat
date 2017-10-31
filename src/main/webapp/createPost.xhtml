@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="/resources/css/styles.css"></link>
+	<script src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="/resources/js/popper.min.js"></script>
+	<script src="/resources/js/popper-utils.min.js"></script>
+	<script src="/resources/js/bootstrap.min.js"></script>
+	<title>PostName</title>
+</h:head>
+<h:body>
+<div class="container">
+	<h:form>
+				<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+					<h:link class="navbar-brand" value="Entrar " outcome="login" rendered="#{not authMb.logged}" />
+					<h:link class="navbar-brand" value="Crear Post" outcome="createPost"  rendered="#{authMb.logged}"/>
+					<h:commandLink class="navbar-brand" value="Salir" action="#{authMb.logout()}"   rendered="#{authMb.logged}"/>
+				</nav>
+		</h:form>
+		<h1>Bienvenido 
+			<h:outputText value="#{authMb.currentUser.name}" />
+			<h:outputText value="#{authMb.currentUser.email}" />
+		</h1>
+		<h:form class="form-group">
+			<h2>Nuevo Post</h2>
+			<div>
+				<label for="title" class="sr-only">Titulo:</label>
+				<h:inputText value="#{postMb.title}" class="form-control" />
+			</div>
+			<div>
+				<label for="content" class="sr-only">Contenido</label>
+				<h:inputTextarea value="#{postMb.content}" class="form-control" />
+			</div>
+			<h:commandButton class="btn btn-md btn-primary"
+				action="#{postMb.create()}">
+			</h:commandButton>
+		</h:form>
+		
+</div>
+</h:body>
+</html>

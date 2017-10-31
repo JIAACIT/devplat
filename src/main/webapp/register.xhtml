@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>
+	<script src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="/resources/js/popper.min.js"></script>
+	<script src="/resources/js/popper-utils.min.js"></script>
+	<script src="/resources/js/bootstrap.min.js"></script>
+	<title>PostUser</title>
+</h:head>
+<h:body>
+
+	<div class="container-fluid">
+		<h:form>
+			<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+				<h:link class="navbar-brand" value="Entrar " outcome="login"
+					rendered="#{not authMb.logged}" />
+				<h:link class="navbar-brand" value="Registrarse" outcome="register"
+					rendered="#{authMb.logged}" />
+				<h:commandLink class="navbar-brand" value="Salir"
+					action="#{authMb.logout()}" rendered="#{not authMb.logged}" />
+			</nav>
+		</h:form>
+		<h1>Formulario de Registro</h1>
+		<div class="col-md-3">
+			<f:view>
+				<h:form class="form-signin">
+					<h2 class="form-signin-heading">Registrese</h2>
+					<div>
+						<h:link outcome="createUser" value="Nuevo Usuario" />
+						<ul>
+							<ui:repeat value="#{userMb.all()}" var="user">
+								<li>#{user.lname}, #{user.name} [#{user.age}]</li>
+							</ui:repeat>
+						</ul>
+					</div>
+				</h:form>
+			</f:view>
+		</div>
+
+
+	</div>
+	<!-- /container -->
+</h:body>
+</html>

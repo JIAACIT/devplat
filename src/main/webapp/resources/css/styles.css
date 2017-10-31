@@ -1,0 +1,8 @@
+.posts > .post {
+    border: 1px solid;
+    margin-bottom: 4px;
+}
+
+.posts > .post > .title {
+	border-bottom: 1px solid lightgray;
+}

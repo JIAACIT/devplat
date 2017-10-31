@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="/resources/css/styles.css"></link>
+	<script src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="/resources/js/popper.min.js"></script>
+	<script src="/resources/js/popper-utils.min.js"></script>
+	<script src="/resources/js/bootstrap.min.js"></script>
+	<title>PostName</title>
+</h:head>
+<h:body>
+	<div class="container">
+		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+			<h:link class="navbar-brand" value="PostUser" outcome="home"
+				rendered="#{authMb.logged}" />
+			<h:link class="navbar-nav" value="Crear Post" outcome="createPost"
+				rendered="#{authMb.logged}" />
+			<h:form class="form-inline">
+				<h:commandLink class="navbar-nav" value="Salir"
+					action="#{authMb.logout()}" rendered="#{authMb.logged}" />
+			</h:form>
+		</nav>
+		<h1>
+			Bienvenido
+			<h:outputText value="#{authMb.currentUser.email}" />
+		</h1>
+		<f:view>
+			<h2>Ultimos Post</h2>
+			<div class="posts">
+				<ui:repeat value="#{postMb.listPostUser()}" var="post">
+					<div class="post">
+						<h2 class="title">
+							#{post.getTitle()} <small class="text-muted">#{post.getDate()}</small>
+						</h2>
+						<div class="content">#{post.getContent()}</div>
+					</div>
+				</ui:repeat>
+			</div>
+		</f:view>
+	</div>
+</h:body>
+</html>
