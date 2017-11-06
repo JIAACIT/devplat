@@ -26,11 +26,10 @@
 			</h:form>
 		</nav>
 		<h1>
+			<img alt="profile photo" src="resources/media/avatar/#{authMb.currentUser.avatar}.PNG"
+				class="rounded-circle" />
 			Bienvenido
 			<h:outputText value="#{authMb.currentUser.email}" />
-			<img alt="profile photo" src="resources/media/user.svg"
-				class="rounded-circle" />
-
 		</h1>
 		<f:view>
 			<h2>Ultimos Post</h2>

@@ -27,7 +27,7 @@ public class User {
 	private String lname;
 
 	@NotNull
-	@Min(value = 5)
+	@Min(value = 18)
 	@Max(value = 150)
 	private int age;
 	
@@ -38,8 +38,20 @@ public class User {
 	@NotNull
 	@Size(min=2, max=255)
 	private String email;
+
+	@NotNull
+	@Min(value = 1)
+	@Max(value = 4)
+	private int avatar;
 	
-	
+	public int getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(int avatar) {
+		this.avatar = avatar;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -51,12 +63,13 @@ public class User {
 	//constructor vacio
 	public User(){}
 	
-	public User(String name, String lname, String pwd, String email, int age){
+	public User(String name, String lname, String pwd, String email, int age,int avatar){
 		this.name = name;
 		this.lname = lname;
 		this.age = age;
 		this.email = email;
 		this.pwd = pwd;
+		this.avatar = avatar;
 	}
 
 	public int getId() {
@@ -102,7 +115,7 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", lname=" + lname + ", age=" + age + "]";
+		return "User [id=" + id + ", name=" + name + ", lname=" + lname + ", age=" + age + " avatar=" + avatar + "]";
 	}
 
 }

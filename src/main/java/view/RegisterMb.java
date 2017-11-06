@@ -17,9 +17,10 @@ public class RegisterMb {
 	private String password;
 	private String email;
 	private int age;
+	private int avatar;
 	
 	public String register(){
-		User user = new User(name, lname, password, email, age);
+		User user = new User(name, lname, password, email, age, avatar);
 		userCntr.create(user);
 		return "index";
 	}

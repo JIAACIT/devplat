@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>
@@ -14,38 +14,61 @@
 	<title>PostUser</title>
 </h:head>
 <h:body>
-		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-			<h:link class="navbar-brand" value="PostUser" outcome="index"
-				rendered="#{not authMb.logged}" />
-			<h:link class="navbar-nav" value="Entrar " outcome="login"
-				rendered="#{authMb.logged}" />
-		</nav>
-<f:view>
-    <h:form>
-        <h1>Crear Usuario</h1>
-        <h:link outcome="index" value="Volver"></h:link>
-		<div>
-			<label>Nombre :</label>
-			<h:inputText value="#{createUserMb.user.name}" />
-		</div>
-		<div>
-			<label>Apellido :</label>
-			<h:inputText value="#{createUserMb.user.lname}" />
-		</div>
-		<div>
-			<label>Edad :</label>
-			<h:inputText value="#{createUserMb.user.age}" />
-		</div>
-		<div>
-			<label>Email :</label>
-			<h:inputText value="#{createUserMb.user.email}" />
-		</div>
-		<div>
-			<label>Contraseña :</label>
-			<h:inputSecret value="#{createUserMb.user.pwd}" />
-		</div>
-		<h:commandButton action="#{createUserMb.create}" value="Crear" />
-    </h:form>
-</f:view>
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<h:link class="navbar-brand" value="PostUser" outcome="index"
+			rendered="#{not authMb.logged}" />
+		<h:link class="navbar-nav" value="Entrar " outcome="login"
+			rendered="#{authMb.logged}" />
+	</nav>
+	<div class="container">
+		<f:view>
+			<h:form>
+				<h1>Crear Usuario</h1>
+				<h:link outcome="index" value="Volver"></h:link>
+				<div>
+					<label>Nombre :</label>
+					<h:inputText value="#{createUserMb.user.name}" />
+				</div>
+				<div>
+					<label>Apellido :</label>
+					<h:inputText value="#{createUserMb.user.lname}" />
+				</div>
+				<div>
+					<label>Edad :</label>
+					<h:inputText value="#{createUserMb.user.age}" />
+				</div>
+				<div>
+					<label>Email :</label>
+					<h:inputText value="#{createUserMb.user.email}" />
+				</div>
+				<div>
+					<label>Contraseña :</label>
+					<h:inputSecret value="#{createUserMb.user.pwd}" />
+				</div>
+				<div>
+					<label>Foto de perfil :</label>
+					<img alt="profile photo"
+						src="resources/media/avatar/1.PNG"
+						class="border border-primary rounded-circle" />
+					<img alt="profile photo"
+						src="resources/media/avatar/2.PNG"
+						class="border border-primary rounded-circle" />
+					<img alt="profile photo"
+						src="resources/media/avatar/3.PNG"
+						class="border border-primary rounded-circle" />
+					<img alt="profile photo"
+						src="resources/media/avatar/4.PNG"
+						class="border border-primary rounded-circle" />
+					<h:selectOneRadio value="#{createUserMb.user.avatar}">
+						<f:selectItem itemValue="1" itemLabel="Anteojos" />
+						<f:selectItem itemValue="2" itemLabel="Barba" />
+						<f:selectItem itemValue="3" itemLabel="Mujer" />
+						<f:selectItem itemValue="4" itemLabel="Negra" />
+					</h:selectOneRadio>
+				</div>
+				<h:commandButton action="#{createUserMb.create}" value="Crear" />
+			</h:form>
+		</f:view>
+	</div>
 </h:body>
 </html>

@@ -14,6 +14,7 @@ public class CreateUserMb {
    
     
     public String create(){
+    	System.out.println("USUARIO: " + user.toString());
     	userController.create(user);
     	return "index";
     	
