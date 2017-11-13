@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -32,11 +34,16 @@ import model.Post;
 		public List<Post> listPostUser(){
 			return postCntr.getUserPosts(authMb.getCurrentUserId());
 		}
-/*
-		public List<Post> listAllPost(){
-			return postCntr.getAllPosts();
-		}
-	*/
+		public List<Post> getAllPost(){
+			try{
+				return postCntr.all(0, 10);
+			} catch (Exception e){
+				e.printStackTrace();
+				FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error interno", null);
+				FacesContext.getCurrentInstance().addMessage(null, msg);
+				return null;
+			}
+	}
 
 		public String getTitle() {
 			return title;

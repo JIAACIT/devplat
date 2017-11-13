@@ -6,7 +6,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-//import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
@@ -14,6 +13,7 @@ import model.User;
 
 @Stateless
 public class UserController {
+	
 
 	@PersistenceContext(unitName = "postuser")
 	private EntityManager entityMgr;

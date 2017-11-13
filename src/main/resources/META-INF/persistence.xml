@@ -6,9 +6,10 @@
 		<jta-data-source>java:openejb/Resource/DbDs</jta-data-source>
 		<class>model.User</class>
 		<class>model.Post</class>
+		<class>model.Comment</class>
 		<properties>
 		
-		<!-- <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/> -->
+		<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
 		</properties>
 	</persistence-unit>	
 </persistence>

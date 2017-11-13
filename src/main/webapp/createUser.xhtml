@@ -27,46 +27,56 @@
 				<h:link outcome="index" value="Volver"></h:link>
 				<div>
 					<label>Nombre :</label>
-					<h:inputText value="#{createUserMb.user.name}" />
+					<h:inputText id="name" value="#{createUserMb.user.name}"
+						required="true" requiredMessage="Ingrese Nombre!" />
+					<h:message errorClass="alert alert-error"  for="name"></h:message>
 				</div>
 				<div>
 					<label>Apellido :</label>
-					<h:inputText value="#{createUserMb.user.lname}" />
+					<h:inputText id="lname" value="#{createUserMb.user.lname}"
+						required="true" requiredMessage="Ingrese Apellido!" />
+					<h:message infoclass="info" for="lname"></h:message>
 				</div>
 				<div>
 					<label>Edad :</label>
-					<h:inputText value="#{createUserMb.user.age}" />
+					<h:inputText id="age" value="#{createUserMb.user.age}"
+						required="true" requiredMessage="Ingrese Edad!" />
+					<h:message infoclass="info" for="age"></h:message>
 				</div>
 				<div>
 					<label>Email :</label>
-					<h:inputText value="#{createUserMb.user.email}" />
+					<h:inputText id="email" value="#{createUserMb.user.email}"
+						required="true" requiredMessage="Ingrese email" />
+					<h:message infoclass="info" for="email"></h:message>
 				</div>
 				<div>
 					<label>Contraseña :</label>
-					<h:inputSecret value="#{createUserMb.user.pwd}" />
+					<h:inputSecret id="pwd" value="#{createUserMb.user.pwd}"
+						required="true" requiredMessage="Ingrese Contraseña!" />
+					<h:message infoclass="info" for="pwd"></h:message>
 				</div>
 				<div>
-					<label>Foto de perfil :</label>
-					<img alt="profile photo"
+					<label>Foto de perfil :</label> <img alt="profile photo"
 						src="resources/media/avatar/1.PNG"
+						class="border border-primary rounded-circle" /> <img
+						alt="profile photo" src="resources/media/avatar/2.PNG"
+						class="border border-primary rounded-circle" /> <img
+						alt="profile photo" src="resources/media/avatar/3.PNG"
+						class="border border-primary rounded-circle" /> <img
+						alt="profile photo" src="resources/media/avatar/4.PNG"
 						class="border border-primary rounded-circle" />
-					<img alt="profile photo"
-						src="resources/media/avatar/2.PNG"
-						class="border border-primary rounded-circle" />
-					<img alt="profile photo"
-						src="resources/media/avatar/3.PNG"
-						class="border border-primary rounded-circle" />
-					<img alt="profile photo"
-						src="resources/media/avatar/4.PNG"
-						class="border border-primary rounded-circle" />
-					<h:selectOneRadio value="#{createUserMb.user.avatar}">
+					<h:selectOneRadio id="avatar" value="#{createUserMb.user.avatar}"
+					required="true" requiredMessage="Elija un avatar!">
 						<f:selectItem itemValue="1" itemLabel="Anteojos" />
 						<f:selectItem itemValue="2" itemLabel="Barba" />
 						<f:selectItem itemValue="3" itemLabel="Mujer" />
 						<f:selectItem itemValue="4" itemLabel="Negra" />
 					</h:selectOneRadio>
+					<h:message infoclass="info" for="avatar"></h:message>
 				</div>
-				<h:commandButton action="#{createUserMb.create}" value="Crear" />
+				<h:commandButton action="#{createUserMb.create}" value="Crear" >
+				<f:ajax execute="@form" event="change" render="age" />
+				</h:commandButton>
 			</h:form>
 		</f:view>
 	</div>

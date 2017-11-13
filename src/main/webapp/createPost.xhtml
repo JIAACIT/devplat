@@ -16,15 +16,20 @@
 <h:body>
 <div class="container">
 	<h:form>
-				<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-					<h:link class="navbar-brand" value="Entrar " outcome="login" rendered="#{not authMb.logged}" />
-					<h:link class="navbar-brand" value="Crear Post" outcome="createPost"  rendered="#{authMb.logged}"/>
-					<h:commandLink class="navbar-brand" value="Salir" action="#{authMb.logout()}"   rendered="#{authMb.logged}"/>
-				</nav>
+		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+			<h:link class="navbar-brand" value="PostUser" outcome="home"
+				rendered="#{authMb.logged}" />
+			<h:link class="navbar-nav" value="Eliminar Usuario"
+				outcome="deleteUser" rendered="#{authMb.logged}" />
+			<h:form class="form-inline">
+				<h:commandLink class="navbar-nav" value="Salir"
+					action="#{authMb.logout()}" rendered="#{authMb.logged}" />
+			</h:form>
+		</nav>
 		</h:form>
-		<h1>Bienvenido 
-			<h:outputText value="#{authMb.currentUser.name}" />
-			<h:outputText value="#{authMb.currentUser.email}" />
+		<h1>PostUser -  
+			<h:outputText value="#{authMb.currentUser.name} " /> 
+			<h:outputText value="#{authMb.currentUser.lname}" />
 		</h1>
 		<h:form class="form-group">
 			<h2>Nuevo Post</h2>

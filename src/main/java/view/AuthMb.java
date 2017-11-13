@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import controller.UserController;
+import exception.AuthenticationFailure;
 import model.User;
 
 @Named
@@ -19,24 +20,29 @@ public class AuthMb implements Serializable {
 
 	private String username;
 	private String password;
-	
+
 	private User currentUser;
-	
-	public boolean isLogged(){
+
+	public boolean isLogged() {
 		return currentUser != null;
 	}
-	
-	public String login(){
-		currentUser = userCntr.getAuthUser(username, password);
-		username = null;
-		password = null;
-		if(isLogged())
-			return "home?faces-redirect=true";
-		else 
-			return null;
+
+	public String login() throws AuthenticationFailure{
+		try{
+			currentUser = userCntr.getAuthUser(username, password);
+			username = null;
+			password = null;
+			
+			if(isLogged())
+				return "home?faces-redirect=true";
+			else 
+				return null;
+			}catch(Exception e){
+				throw new AuthenticationFailure(e);
+		}
 	}
-	
-	public String logout(){
+
+	public String logout() {
 		currentUser = null;
 		return "index?faces-redirect=true";
 	}
@@ -64,10 +70,14 @@ public class AuthMb implements Serializable {
 	public void setCurrentUser(User currentUser) {
 		this.currentUser = currentUser;
 	}
-	
+
 	public int getCurrentUserId() {
 		return currentUser.getId();
 	}
-	
-	
+	/*
+	 * public User getUser() { return currentUser; }
+	 * 
+	 * public void setUser(User user) { this.currentUser = user; }
+	 * 
+	 */
 }

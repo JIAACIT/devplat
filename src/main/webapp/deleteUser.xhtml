@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="/resources/css/bootstrap.min.css"></link>
+	<script src="/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="/resources/js/popper.min.js"></script>
+	<script src="/resources/js/popper-utils.min.js"></script>
+	<script src="/resources/js/bootstrap.min.js"></script>
+	<title>PostUser</title>
+</h:head>
+<h:body>
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<h:link class="navbar-brand" value="PostUser" outcome="home"
+			rendered="#{authMb.logged}" />
+		<h:link class="navbar-nav" value="Crear Post" outcome="createPost"
+			rendered="#{authMb.logged}" />
+		<h:form class="form-inline">
+			<h:commandLink class="navbar-nav" value="Salir"
+				action="#{authMb.logout()}" rendered="#{authMb.logged}" />
+		</h:form>
+	</nav>
+	<div class="container">
+		<f:view>
+			<h:form>
+				<h1>Eliminar Usuario</h1>
+				<div>
+					<label>email :</label>
+					<h:inputText id="email" value="#{deleteuserMb.user.email}" />
+					<h:message infoclass="info" for="email"></h:message>
+				</div>
+				<h:commandButton action="#{deleteuserMb.delete(deleteuserMb.user)}" value="Eliminar" />
+			</h:form>
+		</f:view>
+	</div>
+</h:body>
+</html>
